@@ -1,2 +1,2 @@
 # GB-Homework
-GeekBrains homework 1
+GeekBrains homework
