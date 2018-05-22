@@ -14,5 +14,3 @@ echo $product3->getResult();
 
 
 Singleton::getInstance();
-
-Singleton::getInstance();
