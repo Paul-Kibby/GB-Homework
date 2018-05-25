@@ -1,16 +1,46 @@
 <?php
+require_once 'applications/Twig/Autoloader.php';
+require 'applications/config/db.php';
+require 'applications/classes/Picture.php';
 
-require 'classes/Product.php';
-require 'classes/Singleton.php';
+Twig_Autoloader::register();
 
-$product1 = new DigitalGoods('Программное обеспечение');
-echo $product1->getResult();
+$picture = new Picture($connection);
 
-$product2 = new UnitGoods('Клавиатура');
-echo $product2->getResult();
+if( isset($_POST['submit']) and !empty($_FILES['upload_img']['name']) )
+{
+    if( $picture->upload($_FILES['upload_img']) )
+    {
+        header('Location: /');
+        exit;
+    } else
+    {
+        echo 'Во время добавления изображения возникла ошибка.';
+    }
+}
 
-$product3 = new WeightedGoods('Сахар', 4, 80);
-echo $product3->getResult();
+if( isset($_GET['delete']) and $_GET['delete'] != '' )
+{
+    if( $picture->delete($_GET['delete']) )
+    {
+        header('Location: /');
+        exit;
+    }
+}
 
+$picture->getCatalog();
 
-Singleton::getInstance();
+try {
+    $loader = new Twig_Loader_Filesystem('applications/templates');
+    $twig = new Twig_Environment($loader);
+    $template = $twig->loadTemplate('catalog.tmpl');
+
+    $content = $template->render(array(
+        'title' => 'Каталог',
+        'catalog' => $picture->catalog
+    ));
+    echo $content;
+
+} catch (Exception $e) {
+    die ('ERROR: ' . $e->getMessage());
+}

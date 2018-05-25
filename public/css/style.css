@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial';
+    font-size: 16px;
+}
+
+body {
+    background-color: #F5F6F7;
+}
+
+.catalog {
+    width: 80%;
+    min-width: 360px;
+    min-height: 500px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(80, 102, 123, 0.1);
+}
+
+.catalog-img {
+    width: 100%;
+    min-height: 324px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.catalog-null {
+    margin-top: 160px;
+    text-align: center;
+    font-size: 24px;
+    color: #C2C3C8;
+}
+
+.img-block {
+    display: block;
+    position: relative;
+}
+
+.ib-delete {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #FFFFFF;
+    font-size: 12px;
+    background: rgba(0,0,0,0.4);
+    padding: 6px 10px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ib-delete:hover {
+    color: #FF857A;
+}
+
+.img-block img {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+}
+
+.catalog-panel {
+    width: 100%;
+    border-top: 1px solid #E8E9F0;
+    margin-top: 40px;
+    padding-top: 40px;
+}
+
+.inp-file {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    box-shadow: 0 1px 8px 1px rgba(80, 102, 123, 0.1);
+    cursor: pointer;
+}
+
+.inp-but {
+    display: block;
+    width: 300px;
+    margin: 30px auto 0 auto;
+    padding: 12px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 17px;
+    text-transform: uppercase;
+    background-color: #4285f4;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.inp-but:hover {
+    background-color: #3974D2;
+    box-shadow: 0 2px 16px 4px rgba(80, 102, 123, 0.1);
+}
+
+.view-error {
+    width: 100%;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 24px;
+    color: #C2C3C8;
+}
