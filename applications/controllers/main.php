@@ -13,7 +13,7 @@ if( $logged == 'on' )
     $basketCol = basketCol($connection, $user['id']);
 }
 
-if( $_GET['page'] == 'auth' ) // Если пользователь на странице авторизации/регистрации
+if( isset($_GET['page']) and $_GET['page'] == 'auth' ) // Если пользователь на странице авторизации/регистрации
 {
     if( $logged == 'on' ) // Если авторизация прошла успешно
     {
@@ -61,7 +61,7 @@ if( $_GET['page'] == 'auth' ) // Если пользователь на стра
     }
 
     $content = 'applications/views/auth.tpl.php';
-} else if( $_GET['page'] == 'lk' ) // Если пользователь на странице личного кабинета
+} else if( isset($_GET['page']) and $_GET['page'] == 'lk' ) // Если пользователь на странице личного кабинета
 {
 
     if( $logged != 'on' ) // Если пользователь не авторизован, и каким-то образом попал на страницу личного кабинета
@@ -87,11 +87,11 @@ if( $_GET['page'] == 'auth' ) // Если пользователь на стра
     $lkOrdersView = lkOrdersView($connection, $user['id']);
 
     $content = 'applications/views/lk.tpl.php';
-} else if( $_GET['action'] == 'exit' ) // Если выбран пункт меню "Выход"
+} else if( isset($_GET['action']) and  $_GET['action'] == 'exit' ) // Если выбран пункт меню "Выход"
 {
     $content = 'applications/views/catalog.tpl.php';
     exitAction();
-} else if( $_GET['page'] == 'view' )
+} else if( isset($_GET['page']) and  $_GET['page'] == 'view' )
 {
     if( isset($_GET['id']) )
     {
@@ -102,7 +102,7 @@ if( $_GET['page'] == 'auth' ) // Если пользователь на стра
         header('Location: index.php');
         exit();
     }
-} else if( $_GET['page'] == 'admin' ) // Если пользователь находится на странице "Панель администратора"
+} else if( isset($_GET['page']) and  $_GET['page'] == 'admin' ) // Если пользователь находится на странице "Панель администратора"
 {
     if( $logged == 'on' and $user['admin'] == 1 ) // Проверка пользователя на авторизацию и на права администратора
     {
@@ -182,7 +182,7 @@ if( $_GET['page'] == 'auth' ) // Если пользователь на стра
         header('Location: index.php');
         exit();
     }
-} else if( $_GET['page'] == 'reviews' ) // Если пользователь находится на странице "Отзывы"
+} else if( isset($_GET['page']) and  $_GET['page'] == 'reviews' ) // Если пользователь находится на странице "Отзывы"
 {
     if( isset($_POST['submit_comment']) ) // Если пользователь нажал кнопку отправки отзыва
     {
@@ -220,7 +220,7 @@ if( $_GET['page'] == 'auth' ) // Если пользователь на стра
     $reviewView = reviewView($connection, $user, $logged);
 
     $content = 'applications/views/reviews.tpl.php';
-} else if( $_GET['page'] == 'basket' ) // Если пользователь находится на странице "Корзина"
+} else if( isset($_GET['page']) and  $_GET['page'] == 'basket' ) // Если пользователь находится на странице "Корзина"
 {
     if( $logged == 'on' ) // Проверка на авторизацию
     {
@@ -261,7 +261,7 @@ if( $_GET['page'] == 'auth' ) // Если пользователь на стра
 
     
     $content = 'applications/views/basket.tpl.php';
-} else if( $_GET['page'] == 'order' ) // Если пользователь на странице "Оформление заказа"
+} else if( isset($_GET['page']) and  $_GET['page'] == 'order' ) // Если пользователь на странице "Оформление заказа"
 {
     if( isset($_GET['id']) and isset($_GET['quantity']) )
     {

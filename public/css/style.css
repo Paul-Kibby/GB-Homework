@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 * {
     margin: 0;
     padding: 0;
@@ -52,6 +52,7 @@ hr {
     font-size: 18px;
     padding: 14px;
     text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .header_menu li a:hover {
@@ -90,6 +91,7 @@ hr {
     margin: 12px;
     padding: 20px;
     background-color: #FFFFFF;
+    border-radius: 3px;
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(80, 102, 123, 0.1);
 }
@@ -108,7 +110,7 @@ hr {
 .catalog_price {
     margin-top: 20px;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .catalog_price_discount_text {
@@ -129,7 +131,7 @@ hr {
 .catalog_price_cross {
     margin-top: 10px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: line-through;
 }
 
@@ -146,9 +148,11 @@ hr {
     color: #FFFFFF;
     text-decoration: none;
     background-color: #8443A8;
+    border-radius: 0 0 3px 3px;
     position: absolute;
     left: 0;
     bottom: 0;
+    transition: background-color 0.2s ease;
 }
 
 .catalog_button:hover {
@@ -376,6 +380,7 @@ hr {
     padding: 10px 0 10px 40px;
     display: block;
     width: 100%;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .admin_menu a:hover {
@@ -512,13 +517,13 @@ hr {
 
 .view_block_price {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 20px;
 }
 
 .view_block_discount_text {
     float: right;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
     margin-top: 28px;
     margin-right: 480px;
@@ -527,7 +532,7 @@ hr {
 
 .view_block_discount {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 20px;
     color: #f44a4a;
 }
@@ -548,6 +553,8 @@ hr {
     background-color: #8443A8;
     display: inline-block;
     margin-top: 20px;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
 }
 
 .view_button:hover {
@@ -608,7 +615,7 @@ hr {
 
 .comment_name {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .comment_date {
@@ -638,7 +645,7 @@ hr {
 
 .echo_comment_add a {
     color: #8240A6;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .basket_col {
@@ -667,14 +674,15 @@ hr {
 }
 
 .basket_menu_col {
-    width: 20px;
-    height: 20px;
+    min-width: 17px;
+    height: 17px;
     color: #FFFFFF;
-    background-color: #E80000;
-    border-radius: 50%;
+    background-color: #E95A5A;
+    border-radius: 20px;
     text-align: center;
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 11px;
+    line-height: 18px;
+    padding: 0 6px;
     position: absolute;
     top: 2px;
     right: 2px;
@@ -707,7 +715,7 @@ hr {
 
 .basket_total_cost_sum {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .order_title {
@@ -757,7 +765,7 @@ hr {
 .order_info_price {
     float: right;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 th, td {
@@ -766,40 +774,51 @@ th, td {
   }
   
 th {
-padding: 10px 4px 10px 4px; 
-border: 1px solid #D9DADD;
-background-color: #E7E8EC;
--moz-user-select: none;
--webkit-user-select: none;
-user-select: none;
-color: #2B2B2B;
-word-wrap: break-word;
+    padding: 10px 4px 10px 4px;
+    border-top: 1px solid #D9DADD;
+    border-bottom: 1px solid #D9DADD;
+    border-right: 1px solid #D9DADD;
+    background-color: #E7E8EC;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    color: #2B2B2B;
+    word-wrap: break-word;
+}
+
+th:first-child {
+    border-left: 1px solid #D9DADD;
+}
+
+td:first-child {
+    border-left: 1px solid #E7E8EC;
 }
 
 td {
-border-right: 1px solid #E7E8EC;
-word-wrap: break-word;
-position: relative;
+    border-right: 1px solid #E7E8EC;
+    border-bottom: 1px solid  #E7E8EC;
+    word-wrap: break-word;
+    position: relative;
 }
 
 table {
-margin: 0;
-padding: 0;
-table-layout: fixed;
-width: 100%;
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+    width: 100%;
 }
 table tr {
-background: #FFFFFF;
-border: 1px solid #E7E8EC;
+    background: #FFFFFF;
+    border: 1px solid #E7E8EC;
 }
 table th,
 table td {
-/*padding: .625em;*/
-text-align: center;
+    /*padding: .625em;*/
+    text-align: center;
 }
 
 .t_delete {
-width: 50px;
+    width: 50px;
 }
 
 .lk_orders {
@@ -820,7 +839,7 @@ width: 50px;
 
 .lk_orders_sum2 {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .catalog-pag {

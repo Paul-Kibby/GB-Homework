@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 27 2018 г., 20:00
+-- Время создания: Май 28 2018 г., 12:34
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -104,7 +104,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `name`, `email`, `address`, `phone`, `product_name`, `product_id`, `quantity`, `price`, `status`) VALUES
 (16, 16, 'Владимир', 'upbn@mail.ru', 'Москва', '+78633258744', 'Emporio Armani AR4233', 30, 2, 41800, 0),
-(17, 15, 'Павел', 'kibby@ya.ru', 'Тольятти', '+79022960561', 'Emporio Armani AR1808', 27, 4, 100800, 1);
+(17, 15, 'Павел', 'kibby@ya.ru', 'Тольятти', '+79022960561', 'Emporio Armani AR1808', 27, 4, 100800, 2),
+(18, 15, 'Павел', 'kibby@ya.ru', 'Тольятти', '+79022960561', 'Emporio Armani AR4233', 40, 1, 20900, 0);
 
 -- --------------------------------------------------------
 
@@ -197,7 +198,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT для таблицы `catalog`
@@ -209,7 +210,7 @@ ALTER TABLE `catalog`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `reviews`

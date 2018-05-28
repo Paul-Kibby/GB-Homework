@@ -211,9 +211,9 @@ function adminAddAction($connection, $title, $description, $price, $discount, $i
 
 function catalogViews($connection, $limit=4) // Вывод товаров на главную страницу
 {
-    $catalogContent = [];
+    $catalogContent = '';
 
-    $countRes = mysqli_query($connection, "SELECT COUNT(*) FROM `catalog`");
+    $countRes = mysqli_query($connection, "SELECT COUNT(`id`) FROM `catalog`");
     $cR = mysqli_fetch_array($countRes);
     $result = mysqli_query($connection, "SELECT * FROM `catalog` ORDER BY `id` DESC LIMIT $limit OFFSET 0");
 
@@ -221,10 +221,10 @@ function catalogViews($connection, $limit=4) // Вывод товаров на �
     if( $col < $cR[0] )
     {
         $l = $limit + 4;
-        $catalogContent[1] = '<a class="catalog-pag-link" href="index.php?limit='.$l.'">Ещё</a>';
+        $pag = '<a class="catalog-pag-link" href="index.php?limit='.$l.'">Ещё</a>';
     } else
     {
-        $catalogContent[1] = '';
+        $pag = '';
     }
 
     while( $catalog = mysqli_fetch_assoc($result) )
@@ -232,7 +232,7 @@ function catalogViews($connection, $limit=4) // Вывод товаров на �
         if( $catalog['discount'] > 0 )
         {
             $discount = ($catalog['price'] * (100 - $catalog['discount'])) / 100;
-            $catalogContent[0] .= '
+            $catalogContent .= '
             <div class="catalog">
                 <a class="catalog_link" href="index.php?page=view&id='.$catalog['id'].'">
                     <img class="catalog_img" src="'.$catalog['img_small'].'" alt="часы">
@@ -246,7 +246,7 @@ function catalogViews($connection, $limit=4) // Вывод товаров на �
             ';
         } else
         {
-            $catalogContent[0] .= '
+            $catalogContent .= '
             <div class="catalog">
                 <a class="catalog_link" href="index.php?page=view&id='.$catalog['id'].'">
                     <img class="catalog_img" src="'.$catalog['img_small'].'" alt="часы">
@@ -259,7 +259,9 @@ function catalogViews($connection, $limit=4) // Вывод товаров на �
         }
     }
 
-    return $catalogContent;
+    $return[0] = $catalogContent;
+    $return[1] = $pag;
+    return $return;
 }
 
 function adminCatalogViews($connection) // Вывод товаров в панель администратора
