@@ -1,16 +1,16 @@
 <?php
 
-//ini_set('error_reporting', E_ALL);
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
+require 'application/config/db.php';
 
-require "applications/config/db.php";
-require "applications/controllers/main.php";
+spl_autoload_register(function($classname) {
+    require_once "application/controllers/{$classname}.php";
+});
 
-if( isset($_GET['page']) and $_GET['page'] == 'admin' )
+$page = 'home';
+if( isset($_GET['page']) and $_GET['page'] != '' )
 {
-    require "applications/views/adminMain.tpl.php";
-} else
-{
-    require "applications/views/main.tpl.php";
+    $page = $_GET['page'];
 }
+
+$controller = new PageController($pdo);
+$controller->Request($page);
