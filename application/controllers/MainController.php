@@ -1,44 +1,15 @@
 <?php
 
-class MainController
+namespace application\controllers;
+
+use application\core\Controller;
+
+class MainController extends Controller
 {
-    protected $pdo;
-    protected $title = 'Название сайта';
-    protected $content;
-    protected $user = false;
 
-    public function __construct($pdo)
+    public function indexAction()
     {
-        $this->pdo = $pdo;
+        $this->view->render('Главная страница');
     }
 
-    public function Request($page = 'home')
-    {
-        $this->$page();
-        $this->Render();
-    }
-
-    protected function Template($fileName, $vars)
-    {
-        foreach( $vars as $k => $v )
-        {
-            $$k = $v;
-        }
-
-        ob_start();
-        require $fileName;
-        return ob_get_clean();
-    }
-
-    protected function Render()
-    {
-        $vars = array('title' => $this->title, 'content' => $this->content, 'user' => $this->user);
-        $page = $this->Template('application/views/main.tpl.php', $vars);
-        echo $page;
-    }
-
-    public function __call($name, $arguments)
-    {
-        exit('Метод не найден!');
-    }
 }

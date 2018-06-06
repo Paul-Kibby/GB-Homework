@@ -1,16 +1,15 @@
 <?php
 
-require 'application/config/db.php';
+require 'application/lib/Dev.php';
 
-spl_autoload_register(function($classname) {
-    require_once "application/controllers/{$classname}.php";
+spl_autoload_register(function($class)
+{
+    $path = str_replace('\\', '/', $class.'.php');
+    if( file_exists($path) )
+    {
+        require_once $path;
+    }
 });
 
-$page = 'home';
-if( isset($_GET['page']) and $_GET['page'] != '' )
-{
-    $page = $_GET['page'];
-}
-
-$controller = new PageController($pdo);
-$controller->Request($page);
+$router = new application\core\Router;
+$router->run();
